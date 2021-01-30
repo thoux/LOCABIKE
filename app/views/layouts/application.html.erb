@@ -12,10 +12,23 @@
   </head>
 
   <body>
-    <%= render '/components/navbar' %>
-    <div class="container-fluid">
-      <%= yield %>
-   </div>
-   <%= render 'components/footer' %>
+  <%= render '/components/navbar' %>
+    <!-- Alertes pour devise -->
+     <p class="notice"><%= notice %></p>
+     <p class="alert"><%= alert %></p>
+
+     <ul>
+        <li> <%= link_to 'Créer un compte',new_user_registration_path %> </li>
+        <li> <%= link_to 'Voir tous les users',users_path %> </li>
+      <% if user_signed_in? %>
+        <li> <%= link_to 'Voir mon profil', user_path(current_user) %></li>
+        <li> <%= link_to 'Editer', edit_user_registration_path(current_user) %> </li>
+        <li> <%= link_to 'Déconnexion', destroy_user_session_path(current_user), method: :delete %> </li>
+      <% end %>
+     </ul>
+     <div class="container">
+       <%= yield %>
+     </div>
+  <%= render 'components/footer' %>
   </body>
 </html>
