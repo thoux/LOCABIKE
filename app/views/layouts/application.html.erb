@@ -12,6 +12,10 @@
   </head>
 
   <body>
-    <%= yield %>
+    <%= render '/components/navbar' %>
+    <div class="container-fluid">
+      <%= yield %>
+   </div>
+   <%= render 'components/footer' %>
   </body>
 </html>
