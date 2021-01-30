@@ -5,3 +5,16 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+yamaha = 'Yamaha'
+honda = 'Honda'
+bmw = 'BMV'
+bmw = 'Ducati'
+harley = 'Harley-Davidson'
+
+cross = 'cross'
+enduro = 'enduro'
+sport = 'sport'
+
+
+BikeAd.create!()

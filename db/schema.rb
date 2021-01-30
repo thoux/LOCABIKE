@@ -10,9 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 0) do
+ActiveRecord::Schema.define(version: 2021_01_30_110434) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "bike_ads", force: :cascade do |t|
+    t.string "model", null: false
+    t.string "brand", null: false
+    t.string "category", null: false
+    t.integer "year", null: false
+    t.string "address", null: false
+    t.integer "price_per_day", null: false
+    t.boolean "available", default: true, null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
 end
