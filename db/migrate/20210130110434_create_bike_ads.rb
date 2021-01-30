@@ -7,7 +7,7 @@ class CreateBikeAds < ActiveRecord::Migration[6.0]
       t.integer :year, null: false
       t.string :address, null: false
       t.integer :price_per_day, null: false
-      t.boolean :available, null: false, default: true
+      t.boolean :available, default: true, null: false
 
       t.timestamps
     end
