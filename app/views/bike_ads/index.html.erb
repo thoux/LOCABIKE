@@ -1,0 +1,19 @@
+<div class="container">
+  <h1>Book your bike now</h1>
+  <div>
+    <% @bike_ads.where(available: true).each do |bike_ad| %>
+      <div>
+        <%= bike_ad.model %>
+        <%= bike_ad.brand %> 
+        <%= bike_ad.category %> 
+        <%= bike_ad.year %> 
+        <%= bike_ad.address %> 
+        <%= bike_ad.price_per_day %>
+        <%= bike_ad.user.first_name %>    
+      </div>
+    <%= link_to 'View', bike_ad_path(bike_ad) %>
+    <% end %>
+  </div>
+
+  <%= link_to 'Create an ad', new_bike_ad_path %>
+</div>

@@ -1,0 +1,14 @@
+<div class="container">
+  <h1>Ad details</h1>
+  <div>
+    <%= @bike_ad.model %>
+    <%= @bike_ad.brand %> 
+    <%= @bike_ad.category %> 
+    <%= @bike_ad.year %> 
+    <%= @bike_ad.address %> 
+    <%= @bike_ad.price_per_day %>
+    <%= @bike_ad.user.first_name %>    
+  </div>
+  <%= link_to 'Back to ads', bike_ads_path %>
+</div>
+

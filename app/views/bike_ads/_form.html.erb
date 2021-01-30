@@ -1,0 +1,10 @@
+<%= simple_form_for @bike_ad do |f| %>
+  <%= f.input :model %>
+  <%= f.input :brand, collection: BikeAd::BRANDS %>
+  <%= f.input :category, collection: BikeAd::CATEGORIES %>
+  <%= f.input :year %>
+  <%= f.input :address %>
+  <%= f.input :price_per_day %>
+  <%= f.submit 'Create your ad', class: 'btn btn-primary' %>
+<% end %>
+
