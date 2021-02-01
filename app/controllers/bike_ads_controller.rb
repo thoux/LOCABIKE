@@ -3,7 +3,7 @@ class BikeAdsController < ApplicationController
   before_action :set_bike_ad, only: [:show, :edit, :update, :destroy]
 
   def index
-    @bike_ads = BikeAd.where(available: true).order('updated_at DESC')
+    @bike_ads = BikeAd.available.ordered_by_date
   end
 
   def new

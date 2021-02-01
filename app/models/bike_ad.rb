@@ -1,5 +1,7 @@
 class BikeAd < ApplicationRecord
   belongs_to :user
+  scope :available, -> { where(available: true) }
+  scope :ordered_by_date, -> { order('updated_at DESC') }
 
   BRANDS = ['Yamaha', 'Honda', 'BMW', 'Ducati', 'Harley-Davidson']
   CATEGORIES = ['Cross', 'Enduro', 'Sport']
