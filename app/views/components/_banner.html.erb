@@ -1,9 +1,31 @@
-<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://www.highside-moto.com/wp-content/uploads/2021/01/Yamaha-mt-07-2021-1050x660.jpg);">
+<div class="banner">
   <div class="container">
 
-    <h1>LOCABIKE</h1>
+    <h1>Prêt pour une nouvelle virée ?</h1>
     <p>Louez la moto de vos rêves</p>
-    <a class="btn btn-flat" href="#">Trouver la moto de vos rêves</a>
+
+    <div class="row">
+      <div class="col-12 col-md-6 col-lg-4">
+        <label class="sr-only" for="input1-banner">Modèle de moto recherché</label>
+        <input class="form-control mb-2" id="input1-banner" type="text" placeholder="Modèle">
+        <label class="sr-only" for="input2-banner">Lieu</label>
+        <input class="form-control mb-2" id="input2-banner" type="text" placeholder="Lieu">
+      </div>
+    </div>
+    <div class="row">
+      <div class="d-flex col-12 col-md-6 col-lg-4 flex-wrap flex-sm-nowrap">
+        <label class="sr-only" for="input3-headers-16">Date de départ</label>
+        <input class="form-control mb-2 mr-0 mr-sm-2" id="input3-banner" type="text" placeholder="Départ" onfocus="(this.type='date')" onblur="(this.type='text')">
+        <label class="sr-only" for="input4-banner">Date de retour</label>
+        <input class="form-control mb-2" id="input4-banner" type="text" placeholder="Retour" onfocus="(this.type='date')" onblur="(this.type='text')">
+       </div>
+    </div>
+    <div class="row">
+      <div class="col-12 col-md-6 col-lg-4 mb-4 mb-md-0">
+        <button class="btn btn-primary mb-2">Rechercher</button>
+      </div>
+    </div>
+
   </div>
 </div>
 

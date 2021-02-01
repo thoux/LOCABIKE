@@ -1,0 +1,51 @@
+.bike-card {
+  color: $gray; 
+}
+
+.bike-card-header {
+  position: relative;
+  background-position: center;
+  background-size: cover;
+  height: 10rem;
+  font-size: 0.8rem;
+}
+
+.bike-card-catg {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  padding: 0.2rem;
+  color: $white;
+  &.sport-catg {
+    background-color: $gray;
+  }
+  &.enduro-catg {
+    background-color: $primary;
+  }
+  &.cross-catg {
+    background-color: $yellow;
+  }
+}
+
+.bike-card-user {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+}
+
+.bike-card-body {
+  display: flex;
+  justify-content: space-between;
+  min-height: 5.5rem;
+}
+
+.bike-card-price-div {
+  min-width: 3rem;
+}
+
+.bike-card-price {
+  color: $primary;
+  font-weight: bold;
+}
+
+

@@ -1,0 +1,22 @@
+<div class="bike-cards-grid">
+  <% @bike_ads.each do |bike_ad| %>
+    <%= link_to bike_ad_path(bike_ad) do %>
+      <div class="card border-0 rounded-0 bike-card ">
+        <div class="bike-card-header" style="background-image: url(<%= asset_url('template.jpg') %>)">
+          <div class="bike-card-catg <%= bike_ad.category.downcase %>-catg"><%= bike_ad.category %></div>
+        </div>
+        <div class="card-body bike-card-body">
+          <div class="bike-card-model">
+            <%= bike_ad.model %>
+          </div>
+          <div class="d-flex flex-column justify-content-start text-right bike-card-price-div">
+            <div class="bike-card-price">
+              <%= bike_ad.price_per_day %> €
+            </div>
+            <span class="small text-muted">/ jour</span>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  <% end %>
+</div>

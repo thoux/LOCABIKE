@@ -1,10 +1,20 @@
-<%= simple_form_for @bike_ad do |f| %>
-  <%= f.input :model %>
-  <%= f.input :brand, collection: BikeAd::BRANDS %>
-  <%= f.input :category, collection: BikeAd::CATEGORIES %>
-  <%= f.input :year %>
-  <%= f.input :address %>
-  <%= f.input :price_per_day %>
-  <%= f.submit 'Create your ad', class: 'btn btn-primary' %>
-<% end %>
+<div class="col-12 col-md-6 px-0">
+  <%= simple_form_for @bike_ad do |f| %>
+    <%= f.input :model, label: false, placeholder:'Modèle' %>
+    <%= f.input :brand, label: false, prompt: "Marque", collection: BikeAd::BRANDS %>
+    <%= f.input :category, label: false, prompt: 'Catégorie', collection: BikeAd::CATEGORIES %>
+    <%= f.input :year, label: false, placeholder:"Année d'acquisition" %>
+    <%= f.input :address, label: false, placeholder:'Localisation' %>
+    <%= f.input :price_per_day, label: false, placeholder:'Tarif journalier (en €)' %>
+    <% if @bike_ad.id.nil? %>
+      <%= f.submit 'Ajouter', class: 'btn btn-primary mt-3' %>
+    <% else %>
+      <div class="mb-4">
+        <span class="text-muted">Cochez cette case si votre moto est disponible à la location</span>
+        <%= f.input :available, label: false %>
+      </div>
+      <%= f.submit 'Mettre à jour', class: 'btn btn-primary mt-3' %>
+    <% end %>
+  <% end %>
+</div>
 

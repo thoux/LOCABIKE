@@ -1,9 +1,9 @@
 class BikeAdsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show]
-  before_action :set_bike_ad, only: :show
+  before_action :set_bike_ad, only: [:show, :edit, :update, :destroy]
 
   def index
-    @bike_ads = BikeAd.all
+    @bike_ads = BikeAd.where(available: true).order('updated_at DESC')
   end
 
   def new
@@ -22,6 +22,21 @@ class BikeAdsController < ApplicationController
 
   def show; end
 
+  def edit; end
+
+  def update
+    if @bike_ad.update(params_bike_ad)
+      redirect_to bike_ad_path(@bike_ad)
+    else
+      render :edit
+    end
+  end
+
+  def destroy
+    @bike_ad.destroy
+    redirect_to root_path
+  end
+
   private
 
   def set_bike_ad
@@ -29,6 +44,6 @@ class BikeAdsController < ApplicationController
   end
 
   def params_bike_ad
-    params.require(:bike_ad).permit(:model, :brand, :category, :year, :address, :price_per_day)
+    params.require(:bike_ad).permit(:model, :brand, :category, :year, :address, :price_per_day, :available)
   end
 end
