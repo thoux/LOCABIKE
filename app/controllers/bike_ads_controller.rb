@@ -1,5 +1,5 @@
 class BikeAdsController < ApplicationController
-  skip_before_action :authenticate_user!, only: [:index, :new, :create, :show]
+  skip_before_action :authenticate_user!, only: [:index, :show]
   before_action :set_bike_ad, only: :show
 
   def index
@@ -12,7 +12,7 @@ class BikeAdsController < ApplicationController
 
   def create
     @bike_ad = BikeAd.new(params_bike_ad)
-    @bike_ad.user = User.find(1)
+    @bike_ad.user = current_user
     if @bike_ad.save
       redirect_to bike_ad_path(@bike_ad)
     else
