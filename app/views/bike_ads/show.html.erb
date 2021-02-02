@@ -1,16 +1,18 @@
 <h1>Ad details</h1>
 <div>
   <%= @bike_ad.model %>
-  <%= @bike_ad.brand %> 
-  <%= @bike_ad.category %> 
-  <%= @bike_ad.year %> 
-  <%= @bike_ad.address %> 
+  <%= @bike_ad.brand %>
+  <%= @bike_ad.category %>
+  <%= @bike_ad.year %>
+  <%= @bike_ad.address %>
   <%= @bike_ad.price_per_day %>
-  <%= @bike_ad.user.first_name %> 
+  <%= @bike_ad.user.first_name %>
 </div>
 <% if @bike_ad.user == current_user %>
   <%= link_to 'Edit your ad', edit_bike_ad_path(@bike_ad) %>
 <% end %>
 <%= link_to 'Back to ads', bike_ads_path %>
+
+<%= link_to 'réserver cette moto', new_booking_path, class: "btn btn-primary"%>
 
 

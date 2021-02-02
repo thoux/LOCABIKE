@@ -1,0 +1,6 @@
+<h1>Bookings#new</h1>
+<%= simple_form_for([@bike_ads, @booking]) do |f| %>
+  <%= f.input :start_date %>
+  <%= f.input :end_date %>
+  <%= f.submit %>
+<% end %>
