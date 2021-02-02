@@ -9,4 +9,5 @@ class BikeAd < ApplicationRecord
   validates :model, :brand, :category, :year, :address, :price_per_day, presence: true
   validates :brand, inclusion: { in: BRANDS }
   validates :category, inclusion: { in: CATEGORIES }
+  has_one_attached :photo
 end

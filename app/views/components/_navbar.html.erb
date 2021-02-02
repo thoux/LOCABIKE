@@ -11,7 +11,7 @@
             <div class="dropdown-menu">
               <%= link_to 'Voir mon profil', user_path(current_user),class: "dropdown-item"  %>
               <%= link_to 'Editer', edit_user_registration_path(current_user),class: "dropdown-item" %>
-              <%= link_to 'Déconnexion', destroy_user_session_path(current_user), method: :delete,class: "dropdown-item" %>
+              <%= link_to 'Déconnexion', destroy_user_session_path, method: :delete,class: "dropdown-item" %>
             </div>
           </li>
           <%= link_to 'Ajouter une moto',new_bike_ad_path, class: "btn btn-primary mt-2 mt-md-0 ml-lg-3" %>
