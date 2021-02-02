@@ -8,6 +8,6 @@ Rails.application.routes.draw do
     end
   end
   resources :users, only: [:index, :show, :my_profile]
-
+  delete 'bookings/:id', to: 'bookings#destroy', as: :destroy_booking
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
