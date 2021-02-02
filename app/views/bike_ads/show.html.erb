@@ -8,8 +8,11 @@
   <%= @bike_ad.price_per_day %>
   <%= @bike_ad.user.first_name %> 
 </div>
-<% if @bike_ad.user == current_user %>
+<% if policy(@bike_ad).edit? %>
   <%= link_to 'Edit your ad', edit_bike_ad_path(@bike_ad) %>
+<% end %>
+<% if policy(@bike_ad).destroy? %>
+  <%= link_to 'Destroy your ad', bike_ad_path(@bike_ad), method: :delete, data: { confirm: 'Êtes-vous sûr ?' } %>
 <% end %>
 <%= link_to 'Back to ads', bike_ads_path %>
 
