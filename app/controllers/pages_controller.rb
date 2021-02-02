@@ -3,7 +3,7 @@ class PagesController < ApplicationController
 
   def home
     @homepage = true
-    @bike_ads = BikeAd.available.ordered_by_date.limit(4)
+    @bike_ads = BikeAd.ordered_by_date.limit(4)
   end
 
   def show
