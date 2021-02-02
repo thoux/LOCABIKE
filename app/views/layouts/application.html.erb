@@ -12,12 +12,17 @@
   </head>
 
   <body>
-  <%= render '/components/navbar' %>
+  
+    <%= render '/components/navbar' %>
+    
     <!-- Alertes pour devise -->
-  <%= render '/shared/flashes' %>
-     <div class="container">
-       <%= yield %>
-     </div>
-  <%= render 'components/footer' %>
+    <%= render '/shared/flashes' %>
+    
+    <div class="content <%= 'container my-5' unless @homepage %>"> 
+      <%= yield %>
+    </div>
+    
+    <%= render 'components/footer' %>
+  
   </body>
 </html>

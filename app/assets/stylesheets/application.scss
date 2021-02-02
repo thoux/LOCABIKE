@@ -13,4 +13,50 @@
 @import "pages/index";
 @import "components/banner";
 
+html, body{
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  margin: 0;
+}
+
+body { 
+  max-width: 100%;
+  max-height: 100%;
+  margin: 0 auto;
+}
+
+body{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+ul, li {
+  list-style: none;
+  padding: 0;
+}
+
+a {
+  text-decoration: none;
+  &:hover {
+    text-decoration: none;
+  }
+}
+
+h1 {
+  color: $primary;
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+h2 {
+  color: $primary;
+  font-size: 1.7rem;
+  font-weight: bold;
+}
+
+#content {
+  flex-grow: 1;
+}
 
