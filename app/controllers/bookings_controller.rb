@@ -1,8 +1,8 @@
 class BookingsController < ApplicationController
   before_action :set_bike, only: [:new, :create]
+  before_action :check_bike_available, only: [:new, :create]
 
   def new
-    redirect_to root_path, notice: "La moto est reservée" unless @bike_ad.available == true
     @user = current_user
     @booking = Booking.new
   end
@@ -22,10 +22,6 @@ class BookingsController < ApplicationController
   def destroy
     @user = current_user
     @booking = Booking.find(params[:id])
-
-    @bike = @booking.bike_ad
-    @bike.update(available: true)
-
     @booking.destroy
     redirect_to @user
   end
@@ -38,5 +34,9 @@ class BookingsController < ApplicationController
 
   def booking_params
     params.require(:booking).permit(:start_date, :end_date)
+  end
+
+  def check_bike_available
+    redirect_to root_path, alert: "La moto est reservée" unless @bike_ad.available == true
   end
 end

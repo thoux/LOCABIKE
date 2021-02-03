@@ -7,7 +7,9 @@
   <%= @bike_ad.address %>
   <%= @bike_ad.price_per_day %>
   <%= @bike_ad.user.first_name %>
-  <%= cl_image_tag @bike_ad.photo.key, height: 300, width: 400, crop: :fill %>
+  <% if @bike_ad.photo.attached? %>
+    <%= cl_image_tag @bike_ad.photo.key, height: 300, width: 400, crop: :fill %>
+  <% end %>
 
 </div>
 <% if policy(@bike_ad).edit? %>

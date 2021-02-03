@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   root to: 'pages#home'
   resources :bike_ads do
     member do
-      resources :bookings, only: [:new, :create, :delete]
+      resources :bookings, only: [:new, :create]
     end
   end
   resources :users, only: [:index, :show, :my_profile]
