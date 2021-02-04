@@ -1,9 +1,15 @@
   <!-- Bg -->
+  <% if @user.banner.key.nil? %>
+
+  <% else %>
   <div class="banner" style="
-        background: url(<%= image_url('banner-user.jpg') %>) no-repeat;
-        background-position: center;
+
+        background-image: url(<%=cloudinary_url(@user.banner.key)%>);
+
       ">
   </div>
+  <%end %>
+
   <!-- User info -->
   <div class="card p-lg-2 pt-2 pt-lg-0 rounded-0 border-0">
     <div class="container">
@@ -23,6 +29,7 @@
                 <h3 class="mb-0 font-weight-bold mr-2"><%= @user.first_name %></h3>
               </div>
               <span class="font-size-xs"><%= @user.last_name || "N'a pas encore remplie" %> </span>
+              <%= cl_image_tag @user.avatar.key, height: 50, width: 50, crop: :fill, class:'avatar' %>
             </div>
           </div>
         </div>
