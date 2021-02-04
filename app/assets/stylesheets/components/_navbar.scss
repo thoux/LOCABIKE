@@ -1,7 +1,11 @@
 .navbar-locabike {
+  z-index: 9999;
   justify-content: space-between;
   background-color: white;
+  box-shadow: rgba(0, 0, 0, 0.08) 0px 1px 12px;
   transition: 0.5s background-color ease;
+  position: sticky;
+  top: 0;
 }
 
 .navbar-lewagon .navbar-collapse {
