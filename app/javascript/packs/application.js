@@ -24,6 +24,8 @@ require("channels")
 
 // External imports
 import "bootstrap";
+import { initSweetalert } from '../plugins/init_sweetalert';
+
 
 // Internal imports, e.g:
 // import { initSelect2 } from '../components/init_select2';
@@ -31,4 +33,15 @@ import "bootstrap";
 document.addEventListener('turbolinks:load', () => {
   // Call your functions here, e.g:
   // initSelect2();
+  // initSweetalert('.alert-success', {
+  //   title: "A nice alert",
+  //   text: "This is a great alert, isn't it?",
+  //   icon: "success"
+  // });
+
+  initSweetalert('', {
+    title: 'NOT Good job!',
+    text: 'You clicked the button!',
+    icon: "error"
+  });
 });
