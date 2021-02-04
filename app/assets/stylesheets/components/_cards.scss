@@ -1,5 +1,6 @@
 .bike-card {
   color: $gray; 
+  border-radius: $border-radius;
 }
 
 .bike-card-header {
@@ -15,16 +16,8 @@
   top: 1rem;
   right: 1rem;
   padding: 0.2rem;
+  border-radius: $border-radius;
   color: $white;
-  &.sport-catg {
-    background-color: $gray;
-  }
-  &.enduro-catg {
-    background-color: $primary;
-  }
-  &.cross-catg {
-    background-color: $yellow;
-  }
 }
 
 .bike-card-user {

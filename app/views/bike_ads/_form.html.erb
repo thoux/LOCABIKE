@@ -6,7 +6,8 @@
     <%= f.input :year, label: false, placeholder:"Année d'acquisition" %>
     <%= f.input :address, label: false, placeholder:'Localisation' %>
     <%= f.input :price_per_day, label: false, placeholder:'Tarif journalier (en €)' %>
-    <%= f.input :photo, as: :file %>
+    <%= f.input :photo, as: :file, label: 'Ajouter une photo' %>
+    <div class="file-name"></div>
     <% if @bike_ad.id.nil? %>
       <%= f.submit 'Ajouter', class: 'btn btn-primary mt-3' %>
     <% else %>
@@ -17,5 +18,4 @@
       <%= f.submit 'Mettre à jour', class: 'btn btn-primary mt-3' %>
     <% end %>
   <% end %>
-
-
+</div>
