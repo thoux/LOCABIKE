@@ -5,10 +5,12 @@ class BookingsController < ApplicationController
   def new
     @user = current_user
     @booking = Booking.new
+    authorize @booking
   end
 
   def create
     @booking = Booking.new(booking_params)
+    authorize @booking
     @booking.bike_ad = @bike_ad
     @booking.user = current_user
 

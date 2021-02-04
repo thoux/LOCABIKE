@@ -7,14 +7,16 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    authorize @user
   end
 
   def my_profile
     @user = User.find(params[:id])
     redirect_to root_path unless @user == current_id
+  end
 
   def user_params
-  params.require(:user).permit(:photo)
+    params.require(:user).permit(:photo)
   end
 
 
