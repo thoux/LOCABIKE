@@ -35,18 +35,19 @@ document.addEventListener('turbolinks:load', () => {
   // Call your functions here, e.g:
   // initSelect2();
 
-  // initSweetalert('.alert-success', {
-  //   title: "A nice alert",
-  //   text: "This is a great alert, isn't it?",
-  //   icon: "success"
-  // });
+  initSweetalert('#alert-info', {
+    title: 'Êtes-vous sur ?',
+    text: 'Cette action ne peut pas être annulée',
+    icon: "warning",
+    button: "Je confirme",
+    dangerMode: true,
+  },(value) => {
+  if (value) {
+    const link = document.querySelector('#delete-link');
+    link.click();
+  }
+});
 
-  initSweetalert('', {
-    title: 'NOT Good job!',
-    text: 'You clicked the button!',
-    icon: "error"
-  });
-
-  changeFileInput();
+  changeFileInput(); // Utilisé dans l'upload des photos pour bike_ad
 
 });
