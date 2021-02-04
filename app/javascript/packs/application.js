@@ -36,7 +36,7 @@ document.addEventListener('turbolinks:load', () => {
   // initSelect2();
 
   initSweetalert('#alert-info', {
-    title: 'Êtes-vous sur ?',
+    title: 'Attention',
     text: 'Cette action ne peut pas être annulée',
     icon: "warning",
     button: "Je confirme",
