@@ -89,10 +89,7 @@
       <label class="sr-only" for="input2-booking-box">Date de retour</label>
       <input class="form-control mb-2" id="input2-booking-box" type="text" placeholder="Retour" onfocus="(this.type='date')" onblur="(this.type='text')">
       <button class="btn btn-primary mb-2">Réserver</button>
+      <%= link_to 'réserver cette moto', new_booking_path, class: "btn btn-primary"%>
     </div>
   </div>
-
-
-<%= link_to 'réserver cette moto', new_booking_path, class: "btn btn-primary"%>
-
-
+</div>
