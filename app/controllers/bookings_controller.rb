@@ -1,5 +1,6 @@
 class BookingsController < ApplicationController
   before_action :set_bike, only: [:new, :create]
+  before_action :set_booking, only: [:destroy, :approve]
   before_action :check_bike_available, only: [:new, :create]
 
   def new
@@ -23,12 +24,21 @@ class BookingsController < ApplicationController
 
   def destroy
     @user = current_user
-    @booking = Booking.find(params[:id])
     @booking.destroy
-    redirect_to @user
+    redirect_to user_path(@booking.user), notice: params[:flash_notice]
+  end
+
+  def approve
+    @booking.update(pending: false)
+    redirect_to user_path(@booking.user), notice: 'Votre accord a bien été pris en compte pour cette réservation'
   end
 
   private
+
+  def set_booking
+    @booking = Booking.find(params[:id])
+    authorize @booking
+  end
 
   def set_bike
     @bike_ad = BikeAd.find(params[:id])
