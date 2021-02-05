@@ -24,6 +24,8 @@ require("channels")
 
 // External imports
 import "bootstrap";
+import { initSweetalert } from '../plugins/init_sweetalert';
+
 
 // Internal imports, e.g:
 // import { initSelect2 } from '../components/init_select2';
@@ -32,5 +34,20 @@ import { changeFileInput } from 'components/change_file_input';
 document.addEventListener('turbolinks:load', () => {
   // Call your functions here, e.g:
   // initSelect2();
-  changeFileInput();
+
+  initSweetalert('#alert-info', {
+    title: 'Attention',
+    text: 'Cette action ne peut pas être annulée',
+    icon: "warning",
+    button: "Je confirme",
+    dangerMode: true,
+  },(value) => {
+  if (value) {
+    const link = document.querySelector('#delete-link');
+    link.click();
+  }
+});
+
+  changeFileInput(); // Utilisé dans l'upload des photos pour bike_ad
+
 });
