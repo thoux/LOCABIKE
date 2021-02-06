@@ -3,7 +3,12 @@ class BikeAdsController < ApplicationController
   before_action :set_bike_ad, only: [:show, :edit, :update, :destroy]
 
   def index
-    @bike_ads = policy_scope(BikeAd).ordered_by_date
+    if params[:query].present? #&& params[:city].present?
+      sql_query = "model ILIKE :query OR brand ILIKE :query" #AND address ILIKE :query
+      @bike_ads = policy_scope(BikeAd).where(sql_query, query: "%#{params[:query]}%")
+    else
+      @bike_ads = policy_scope(BikeAd).ordered_by_date
+    end
   end
 
   def new
