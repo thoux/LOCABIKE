@@ -11,10 +11,10 @@
 // Your CSS partials
 @import "components/index";
 @import "pages/index";
-@import "components/banner";
 
 html, body{
   width: 100%;
+  min-height: 100vh;
   padding: 0;
   margin: 0;
 }
@@ -60,7 +60,6 @@ h3 {
   font-weight: bold;
 }
 
-#content {
+.content {
   flex-grow: 1;
 }
-
