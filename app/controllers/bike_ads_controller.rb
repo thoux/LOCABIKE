@@ -50,6 +50,6 @@ class BikeAdsController < ApplicationController
   end
 
   def params_bike_ad
-    params.require(:bike_ad).permit(:model, :photo, :brand, :category, :year, :address, :price_per_day, :available)
+    params.require(:bike_ad).permit(:model, :photo, :brand, :category, :year, :address, :price_per_day, :description, :available)
   end
 end
