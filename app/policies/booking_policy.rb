@@ -6,7 +6,7 @@ class BookingPolicy < ApplicationPolicy
   end
 
   def create?
-    true
+    record.bike_ad.user != user
   end
 
   def show?
@@ -14,10 +14,10 @@ class BookingPolicy < ApplicationPolicy
   end
 
   def destroy?
-    record.user = user
+    record.user == user || record.bike_ad.user == user
   end
 
   def approve?
-    record.user = user
+    record.bike_ad.user == user
   end
 end

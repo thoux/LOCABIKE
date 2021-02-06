@@ -18,7 +18,7 @@
     <!-- Alertes pour devise -->
     <%= render '/shared/flashes' %>
     
-    <div class="content <%= 'container my-5' unless @homepage %>"> 
+    <div class="content <%= 'container' unless @disable_container %>" style="<%= 'margin-top: 6rem; margin-bottom: 2.4rem;' unless @disable_margins %>"> 
       <%= yield %>
     </div>
     

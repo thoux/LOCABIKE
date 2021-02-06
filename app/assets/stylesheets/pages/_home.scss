@@ -1,1 +1,10 @@
 // Specific CSS for your home-page
+
+.home-header {
+  height: 100vh;
+  display: flex;
+}
+
+.home-banner {
+  flex-grow: 1;
+}

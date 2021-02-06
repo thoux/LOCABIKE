@@ -7,6 +7,8 @@ class UsersController < ApplicationController
   end
 
   def show
+    @disable_container = true
+    @disable_margins = true
     @user = User.find(params[:id])
     authorize @user
   end

@@ -4,19 +4,19 @@ class BookingsController < ApplicationController
   before_action :check_bike_available, only: [:new, :create]
 
   def new
-    @user = current_user
     @booking = Booking.new
+    @booking.bike_ad = @bike_ad
     authorize @booking
   end
 
   def create
     @booking = Booking.new(booking_params)
-    authorize @booking
     @booking.bike_ad = @bike_ad
     @booking.user = current_user
+    authorize @booking
 
     if @booking.save
-      redirect_to user_path(@booking.user), notice: "La moto est louée"
+      redirect_to user_path(@booking.user), notice: "Votre demande de réservation a été transmise à #{@bike_ad.user.first_name}"
     else
       render :new
     end
@@ -25,12 +25,12 @@ class BookingsController < ApplicationController
   def destroy
     @user = current_user
     @booking.destroy
-    redirect_to user_path(@booking.user), notice: params[:flash_notice]
+    redirect_to user_path(@user), notice: params[:flash_notice]
   end
 
   def approve
     @booking.update(pending: false)
-    redirect_to user_path(@booking.user), notice: 'Votre accord a bien été pris en compte pour cette réservation'
+    redirect_to user_path(@booking.bike_ad.user), notice: 'Votre accord a bien été pris en compte pour cette réservation'
   end
 
   private
