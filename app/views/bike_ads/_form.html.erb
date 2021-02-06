@@ -7,7 +7,9 @@
     <%= f.input :year, label: false, placeholder:"Année d'acquisition" %>
     <%= f.input :address, label: false, placeholder:'Localisation', input_html: { class: "input_address" }%>
     <%= f.input :price_per_day, label: false, placeholder:'Tarif journalier (en €)' %>
+    <%= f.input :description, label: false, placeholder:'Description' %>
     <% if @bike_ad.photo.attached? %>
+      <%= cl_image_tag @bike_ad.photo.key, quality: :auto, crop: :fill, alt: "Photo de la moto #{@bike_ad.model} proposée par #{@bike_ad.user.first_name}", class: 'bike-ad-photo mb-2' %>
       <%= f.input :photo, as: :file, label: 'Modifier la photo' %>
     <% else %>
       <%= f.input :photo, as: :file, label: 'Ajouter une photo' %>
