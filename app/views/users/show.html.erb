@@ -1,7 +1,6 @@
   <!-- Bg -->
-  <div class="banner" style="
-        background: url(<%= image_url('banner-user.jpg') %>) no-repeat;
-        background-position: center;
+  <div class="banner user-banner" style="
+        background: url(<%= image_url('banner-user.jpg') %>);
       ">
   </div>
   <!-- User info -->
@@ -38,9 +37,10 @@
       </div>
     </div>
   </div>
+
   <!-- Content -->
+  <div class="container">
   <div class="py-5 py-md-5">
-    <div class="container">
       <div class="row">
         <div class="col-lg-3 col-md-4 col-12">
           <!-- Card -->
@@ -88,15 +88,42 @@
               </h4>
             </div>
 
-            <div>
-              <p>Mes réservations</p>
-              <ul>
-                <% current_user.bookings.each do |booking| %>
-                <li><%= booking.bike_ad.model %> - <%= link_to 'Annuler', destroy_booking_path(booking), method: :delete %></li>
-                <% end %>
-              </ul>
+            <% if @user == current_user %>
 
-            </div>
+              <div>
+                <p>Mes réservations</p>
+                <ul>
+                  <% current_user.bookings.each do |booking| %>
+                    <li>
+                      <%= booking.bike_ad.model %> -                     
+                      <% if booking.pending == true %>
+                        en attente d'approbation par <%= booking.bike_ad.user.first_name %> -
+                      <% else %>
+                        réservation acceptée -
+                      <% end %>
+                      <%= link_to 'Annuler', destroy_booking_path(booking, flash_notice: 'Votre réservation a bien été annulée.'), method: :delete, data: { confirm: 'Êtes-vous sûr ?' } %>
+                    </li>
+                  <% end %>
+                </ul>
+
+                <p>Mes annonces</p>
+                <ul>
+                  <% bookings = Booking.joins(:bike_ad).where('bike_ads.user_id = ?', current_user.id) %>
+                  <% bookings.each do |booking| %>
+                    <li><%= booking.bike_ad.model %> - 
+                    <% if booking.pending == true %>
+                      <%= link_to 'Approuver', approve_booking_path(booking), class: 'btn btn-outline-primary', method: 'patch' %> 
+                      <%= link_to 'Refuser', destroy_booking_path(booking, flash_notice: 'Votre refus a bien été pris en compte pour cette réservation.'), method: :delete, data: { confirm: 'Êtes-vous sûr ?' }, class: 'btn btn-outline-danger' %>
+                      <%= link_to 'Voir', bike_ad_path(booking.bike_ad), class: 'btn btn-outline-secondary' %>
+                    <% else %>
+                      réservation approuvée
+                    <% end %>
+                  <% end %>
+                </ul>
+              </div>
+
+            <% end %>
+
             <!-- Card body -->
             <div class="card-body">
               <!-- List group -->
@@ -283,6 +310,7 @@
             </div>
           </div>
         </div>
-      </div>
+
+    </div>
     </div>
   </div>

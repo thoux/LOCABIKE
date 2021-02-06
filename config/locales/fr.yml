@@ -1,0 +1,6 @@
+fr:
+  activerecord:
+    attributes:
+      booking:
+        start_date: "date de départ"
+        end_date: "date de retour"
