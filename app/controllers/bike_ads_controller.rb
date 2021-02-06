@@ -4,6 +4,7 @@ class BikeAdsController < ApplicationController
 
   def index
     @bike_ads = policy_scope(BikeAd).ordered_by_date
+
   end
 
   def new
@@ -25,6 +26,15 @@ class BikeAdsController < ApplicationController
   def show
     @booking = Booking.new
     authorize @booking
+    @bike_ads = policy_scope(BikeAd).ordered_by_date
+    @markers =  @bike_ads.geocoded.map do |bike|
+      {
+        lat: bike.latitude,
+        lng: bike.longitude,
+
+      }
+    end
+
   end
 
   def edit; end

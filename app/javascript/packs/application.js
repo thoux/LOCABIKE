@@ -25,7 +25,9 @@ require("channels")
 // External imports
 import "bootstrap";
 import { initSweetalert } from '../plugins/init_sweetalert';
-
+import 'mapbox-gl/dist/mapbox-gl';
+import { initMapbox } from '../plugins/init_mapbox'
+import { initAutocomplete } from '../plugins/init_autocomplete'
 
 // Internal imports, e.g:
 // import { initSelect2 } from '../components/init_select2';
@@ -50,21 +52,9 @@ document.addEventListener('turbolinks:load', () => {
 
   changeFileInput(); // Utilisé dans l'upload des photos pour bike_ad
 
+
+  initMapbox();
+  initAutocomplete();
 });
 
 
-import mapboxgl from 'mapbox-gl';
-
-const initMapbox = () => {
-  const mapElement = document.getElementById('map');
-
-  if (mapElement) { // only build a map if there's a div#map to inject into
-    mapboxgl.accessToken = mapElement.dataset.mapboxApiKey;
-    const map = new mapboxgl.Map({
-      container: 'map',
-      style: 'mapbox://styles/mapbox/streets-v10'
-    });
-  }
-};
-
-export { initMapbox };
