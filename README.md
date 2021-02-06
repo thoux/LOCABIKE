@@ -1,1 +1,16 @@
-Rails app generated with [lewagon/rails-templates](https://github.com/lewagon/rails-templates), created by the [Le Wagon coding bootcamp](https://www.lewagon.com) team.
+## Concept
+
+ - Louer facilement des motos ! 🏍
+
+## Crédits
+
+Application créée au Wagon par :
+
+ - Simon Boutin
+ - Antoine Legoix
+ - Fabien Berthoux
+
+## Try it
+
+- https://locabike.herokuapp.com/
+- user: 'thoux08+mitch@gmail.com'  / password: 'buchannon'

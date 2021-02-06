@@ -3,15 +3,17 @@ class BikeAdsController < ApplicationController
   before_action :set_bike_ad, only: [:show, :edit, :update, :destroy]
 
   def index
-    @bike_ads = BikeAd.available.ordered_by_date
+    @bike_ads = policy_scope(BikeAd).ordered_by_date
   end
 
   def new
     @bike_ad = BikeAd.new
+    authorize @bike_ad
   end
 
   def create
     @bike_ad = BikeAd.new(params_bike_ad)
+    authorize @bike_ad
     @bike_ad.user = current_user
     if @bike_ad.save
       redirect_to bike_ad_path(@bike_ad)
@@ -34,13 +36,14 @@ class BikeAdsController < ApplicationController
 
   def destroy
     @bike_ad.destroy
-    redirect_to root_path
+    redirect_to bike_ads_path
   end
 
   private
 
   def set_bike_ad
     @bike_ad = BikeAd.find(params[:id])
+    authorize @bike_ad
   end
 
   def params_bike_ad

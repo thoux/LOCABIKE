@@ -95,6 +95,16 @@
                 Mes annonces <span class="text-muted font-size-xs">(12)</span>
               </h4>
             </div>
+
+            <div>
+              <p>Mes réservations</p>
+              <ul>
+                <% current_user.bookings.each do |booking| %>
+                <li><%= booking.bike_ad.model %> - <%= link_to 'Annuler', destroy_booking_path(booking), method: :delete %></li>
+                <% end %>
+              </ul>
+
+            </div>
             <!-- Card body -->
             <div class="card-body">
               <!-- List group -->

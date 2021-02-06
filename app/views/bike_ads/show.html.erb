@@ -1,18 +1,94 @@
-<h1>Ad details</h1>
-<div>
-  <%= @bike_ad.model %>
-  <%= @bike_ad.brand %>
-  <%= @bike_ad.category %>
-  <%= @bike_ad.year %>
-  <%= @bike_ad.address %>
-  <%= @bike_ad.price_per_day %>
-  <%= @bike_ad.user.first_name %>
+<div class="row flex-column-reverse flex-lg-row">
+  <div class="col-12 col-lg-8 mt-4 mt-lg-0">
+    <div class="card border-0 p-4">
+
+      <div class="d-flex justify-content-between flex-wrap flex-lg-nowrap">
+        <div>
+          <h1 class="mb-0"><%= @bike_ad.model %></h1>
+
+          <div>
+            <%= link_to @bike_ad.category, '#', class: "bike-ad-label catg #{@bike_ad.category.downcase}-catg" %>
+            <%= link_to @bike_ad.brand, '#', class: "bike-ad-label search" %>
+            <span class="bike-ad-label"><%= @bike_ad.year %></span>
+            <%= link_to 'Pyrénées-Orientales', '#', class: "bike-ad-label search" %>
+          </div>
+        </div>
+        <div class="align-self-end">
+          <% if policy(@bike_ad).edit? %>
+            <%= link_to edit_bike_ad_path(@bike_ad), class: 'btn btn-outline-primary mt-2', title: 'Editer' do %>
+              <i class="far fa-edit"></i>
+            <% end %>
+          <% end %>
+          <% if policy(@bike_ad).destroy? %>
+            <button id="alert-info" class="btn btn-outline-danger mt-2"><i class="far fa-times-circle"></i></button>
+            <%= link_to "",bike_ad_path(@bike_ad), method: :delete, id: "delete-link", class: 'hidden' %>
+          <% end %>
+        </div>
+      </div>
+
+      <div class="my-3">
+      <% if @bike_ad.photo.attached? %>
+        <%= cl_image_tag @bike_ad.photo.key, quality: :auto, crop: :fill, alt: "Photo de la moto #{@bike_ad.model} proposée par #{@bike_ad.user.first_name}", class: 'bike-ad-photo' %>
+      <% else %>
+        <img src="<%= asset_url('template.jpg') %>" class="bike-ad-photo" alt="<%= "Photo de la moto #{@bike_ad.model} proposée par #{@bike_ad.user.first_name}" %>">
+      <% end %>
+      </div>
+
+      <div class="d-flex justify-content-between align-items-center">
+        <div>
+          <i class="fas fa-star rating"></i> 4,5 (15 avis)
+        </div>
+        <div>
+          <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar", alt: "", title: "#{@bike_ad.user.first_name}" %>
+        </div>
+      </div>
+
+      <hr>
+      <div>
+        <p class="my-0"><%= 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sint laborum veritatis voluptas, iste ea commodi sapiente ipsam reprehenderit quisquam error accusantium quas molestias nisi. Recusandae ullam natus magnam ex aspernatur?' * 3 %></p>
+      </div>
+      <hr>
+
+      <div>
+        <h3>Localisation</h3>
+        <img src="<%= asset_url('map-template.jpg') %>" alt="" class="bike-ad-photo">
+      </div>
+      <hr>
+
+      <div>
+        <h3>Commentaires</h3>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam ab excepturi, aut quidem inventore provident, assumenda tempore soluta eaque dolorem earum culpa cumque dolorum labore expedita eum, ut illo ratione!
+      </div>
+      <hr>
+
+      <div>
+        <h3>Propriétaire</h3>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam ab excepturi, aut quidem inventore provident, assumenda tempore soluta eaque dolorem earum culpa cumque dolorum labore expedita eum, ut illo ratione!
+      </div>
+    </div>
+
+    <div class="card border-0 p-4 mt-4">
+      <h3>Des offres similaires</h3>
+    </div>
+    <div class="bike-cards-grid mt-2">
+      <% @bike_ads = BikeAd.available.order("category") %>
+      <%= render 'components/bike_card', locals: { bike_ads: @bike_ads } %>
+    </div>
+
+  </div>
+
+  <div class="col-12 col-lg-4">
+    <div class="card border-0 p-4 booking-box">
+      <div class="d-flex align-items-center">
+        <h3><%= @bike_ad.price_per_day %> €</h3>
+        <span class="ml-1">/ jour</span>
+      </div>
+      <label class="sr-only" for="input1-booking-box">Date de départ</label>
+      <input class="form-control mb-2 mr-0 mr-sm-2" id="input1-booking-box" type="text" placeholder="Départ" onfocus="(this.type='date')" onblur="(this.type='text')">
+      <label class="sr-only" for="input2-booking-box">Date de retour</label>
+      <input class="form-control mb-2" id="input2-booking-box" type="text" placeholder="Retour" onfocus="(this.type='date')" onblur="(this.type='text')">
+      <button class="btn btn-primary mb-2">Réserver</button>
+      <%= link_to 'réserver cette moto', new_booking_path, class: "btn btn-primary"%>
+    </div>
+  </div>
 </div>
-
-<%= cl_image_tag @bike_ad.photo.key, height: 300, width: 400, crop: :fill %>
-
-<% if @bike_ad.user == current_user %>
-  <%= link_to 'Edit your ad', edit_bike_ad_path(@bike_ad) %>
-<% end %>
-<%= link_to 'Back to ads', bike_ads_path %>
-

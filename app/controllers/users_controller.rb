@@ -2,11 +2,13 @@ class UsersController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show]
 
   def index
-    @users = User.all
+    @users = policy_scope(User)
+    authorize @users
   end
 
   def show
     @user = User.find(params[:id])
+    authorize @user
   end
 
   def my_profile
@@ -15,7 +17,10 @@ class UsersController < ApplicationController
   end
 
   def user_params
-  params.require(:user).permit(:photo, :avatar)
+
+  params.require(:user).permit(:banner, :avatar)
+
+
   end
 
 

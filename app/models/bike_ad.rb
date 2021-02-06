@@ -1,5 +1,7 @@
 class BikeAd < ApplicationRecord
   belongs_to :user
+  has_many :bookings, dependent: :destroy
+
   scope :available, -> { where(available: true) }
   scope :ordered_by_date, -> { order('updated_at DESC') }
 
