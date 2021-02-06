@@ -1,10 +1,11 @@
 .navbar-locabike {
+  width: 100%;
   z-index: 9999;
   justify-content: space-between;
-  background-color: white;
+  background-color: rgba(255, 255, 255, 1);
   box-shadow: rgba(0, 0, 0, 0.08) 0px 1px 12px;
   transition: 0.5s background-color ease;
-  position: sticky;
+  position: fixed;
   top: 0;
 }
 
