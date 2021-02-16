@@ -5,7 +5,7 @@
     <%= f.input :brand, label: false, prompt: "Marque", collection: BikeAd::BRANDS %>
     <%= f.input :category, label: false, prompt: 'Catégorie', collection: BikeAd::CATEGORIES %>
     <%= f.input :year, label: false, placeholder:"Année d'acquisition" %>
-    <%= f.input :address, label: false, placeholder:'Localisation' %>
+    <%= f.input :address, label: false, placeholder:'Localisation', input_html: { class: "input_address" }%>
     <%= f.input :price_per_day, label: false, placeholder:'Tarif journalier (en €)' %>
     <%= f.input :description, label: false, placeholder:'Description' %>
     <% if @bike_ad.photo.attached? %>
