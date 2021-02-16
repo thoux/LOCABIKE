@@ -30,6 +30,7 @@ import { initSweetalert } from '../plugins/init_sweetalert';
 // Internal imports, e.g:
 // import { initSelect2 } from '../components/init_select2';
 import { changeFileInput } from 'components/change_file_input';
+import { displayBookingPrice } from 'components/display_booking_price';
 
 document.addEventListener('turbolinks:load', () => {
   // Call your functions here, e.g:
@@ -49,5 +50,5 @@ document.addEventListener('turbolinks:load', () => {
 });
 
   changeFileInput(); // Utilisé dans l'upload des photos pour bike_ad
-
+  displayBookingPrice();
 });

@@ -97,6 +97,7 @@
               <%= f.error_notification %>
               <%= f.input :start_date, label: false, as: :string, html5: true, placeholder: 'Départ', required: true, input_html: { onfocus: "(this.type='date')", onblur:"(this.type='text')" } %>
               <%= f.input :end_date, as: :string, label: false, html5: true, placeholder: 'Retour', required: true, input_html: { onfocus: "(this.type='date')", onblur:"(this.type='text')" } %>
+              <div id="booking-price" data-price-ad="<%= @bike_ad.price_per_day %>"></div>
               <%= f.submit 'Réserver', class: 'btn btn-primary mb-2 w-100' %>
             <% end %>
           
