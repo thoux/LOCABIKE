@@ -7,9 +7,10 @@ class BikeAd < ApplicationRecord
   scope :ordered_by_date, -> { order('updated_at DESC') }
 
   BRANDS = ['Yamaha', 'Honda', 'BMW', 'Ducati', 'Harley-Davidson']
-  CATEGORIES = ['Cross', 'Enduro', 'Sport']
+  CATEGORIES = ['Cross', 'Enduro', 'Sportive', 'Roadster']
 
-  validates :model, :brand, :category, :year, :address, :price_per_day, :description, :photo, presence: true
+  validates :model, :brand, :category, :year, :address, :price_per_day, :description, presence: true
   validates :brand, inclusion: { in: BRANDS }
   validates :category, inclusion: { in: CATEGORIES }
+  validates :photo, content_type: ['image/png', 'image/jpg', 'image/jpeg']
 end
