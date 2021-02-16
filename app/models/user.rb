@@ -8,15 +8,15 @@ class User < ApplicationRecord
 
   has_many :bookings
 
-
-
-
-
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
   validates :first_name, :address, presence: true
 
+
   geocoded_by :address
   after_validation :geocode, if: :will_save_change_to_address?
+
+  validates :avatar, content_type: ['image/png', 'image/jpg', 'image/jpeg']
+  validates :banner, content_type: ['image/png', 'image/jpg', 'image/jpeg']
 end
