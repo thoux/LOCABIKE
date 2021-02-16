@@ -1,7 +1,7 @@
   <!-- Bg -->
 
   <% if @user.banner.attached? %>
-    <div class="banner" style="
+    <div class="user-banner" style="
       background-image: url(<%=cloudinary_url(@user.banner.key)%>);
     </div>
   <%end %>
@@ -100,7 +100,7 @@
                 <ul>
                   <% current_user.bookings.each do |booking| %>
                     <li>
-                      <%= booking.bike_ad.model %> -                     
+                      <%= booking.bike_ad.model %> -
                       <% if booking.pending == true %>
                         en attente d'approbation par <%= booking.bike_ad.user.first_name %> -
                       <% else %>
@@ -115,9 +115,9 @@
                 <ul>
                   <% bookings = Booking.joins(:bike_ad).where('bike_ads.user_id = ?', current_user.id) %>
                   <% bookings.each do |booking| %>
-                    <li><%= booking.bike_ad.model %> - 
+                    <li><%= booking.bike_ad.model %> -
                     <% if booking.pending == true %>
-                      <%= link_to 'Approuver', approve_booking_path(booking), class: 'btn btn-outline-primary', method: 'patch' %> 
+                      <%= link_to 'Approuver', approve_booking_path(booking), class: 'btn btn-outline-primary', method: 'patch' %>
                       <%= link_to 'Refuser', destroy_booking_path(booking, flash_notice: 'Votre refus a bien été pris en compte pour cette réservation.'), method: :delete, data: { confirm: 'Êtes-vous sûr ?' }, class: 'btn btn-outline-danger' %>
                       <%= link_to 'Voir', bike_ad_path(booking.bike_ad), class: 'btn btn-outline-secondary' %>
                     <% else %>
