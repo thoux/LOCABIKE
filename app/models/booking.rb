@@ -2,7 +2,7 @@ class Booking < ApplicationRecord
   belongs_to :bike_ad
   belongs_to :user
 
-  validates :start_date, :end_date, presence: true
+  validates :start_date, :end_date, :price, presence: true
   validate  :start_date_greater_than_yesterday?
   validate  :end_date_after_start_date?
 
