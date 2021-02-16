@@ -13,16 +13,14 @@ class UsersController < ApplicationController
     authorize @user
   end
 
-  def my_profile
+  def my_profil
     @user = User.find(params[:id])
-    redirect_to root_path unless @user == current_id
+    @bike_ads = @user.bike_ads
+    authorize @user
   end
 
   def user_params
-
-  params.require(:user).permit(:banner, :avatar)
-
-
+    params.require(:user).permit(:banner, :avatar)
   end
 
 

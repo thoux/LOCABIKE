@@ -12,4 +12,9 @@ class UserPolicy < ApplicationPolicy
   def show?
     true
   end
+
+  def my_profil?
+    record == user
+  end
+
 end

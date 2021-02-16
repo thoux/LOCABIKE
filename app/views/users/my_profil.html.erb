@@ -1,0 +1,38 @@
+<h1>Bienvenue dans votre administration <%= @user.first_name %></h1>
+<p>C'est ici que vous pouvez gérer vos annonces et vos réservations.</p>
+
+<h3>Mes annonces</h3>
+<div class="container">
+  <% if @bike_ads.present? %>
+    <%= render "components/bike_card" %>
+  <% else %>
+    Vous n'avez pas de moto, <%= link_to 'ajoutez en une maintenant !', new_bike_ad_path %>
+  <% end %>
+</div>
+
+
+<h3 class="mt-3">Mes réservations</h3>
+
+<div class="container">
+
+ <% if current_user.bookings.empty? %>
+    Vous n'avez pas encore de réservation
+  <% else %>
+  <ul>
+    <% current_user.bookings.each do |booking| %>
+      <li>
+        <%= booking.bike_ad.model %> -
+        <% if booking.pending == true %>
+          en attente d'approbation par <%= booking.bike_ad.user.first_name %> -
+        <% else %>
+          réservation acceptée -
+        <% end %>
+        <%= link_to 'Annuler', destroy_booking_path(booking, flash_notice: 'Votre réservation a bien été annulée.'), method: :delete, data: { confirm: 'Êtes-vous sûr ?' } %>
+      </li>
+    <% end %>
+  </ul>
+  <% end %>
+</div>
+
+
+<%= pe = console %>

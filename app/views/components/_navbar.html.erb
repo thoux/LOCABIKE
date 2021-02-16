@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-white navbar-locabike"> 
+<nav class="navbar navbar-expand-lg navbar-light bg-white navbar-locabike">
   <div class="container">
     <a class="navbar-brand" href="/">LOCABIKE</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigations-08" aria-controls="navigations-08" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
@@ -9,6 +9,7 @@
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown"><%= current_user.first_name %></a>
             <div class="dropdown-menu">
+              <%= link_to 'Voir mon admin', user_profil_path(current_user),class: "dropdown-item"  %>
               <%= link_to 'Voir mon profil', user_path(current_user),class: "dropdown-item"  %>
               <%= link_to 'Editer', edit_user_registration_path(current_user),class: "dropdown-item" %>
               <%= link_to 'Déconnexion', destroy_user_session_path, method: :delete,class: "dropdown-item" %>

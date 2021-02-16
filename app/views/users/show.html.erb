@@ -97,19 +97,7 @@
 
               <div>
                 <p>Mes réservations</p>
-                <ul>
-                  <% current_user.bookings.each do |booking| %>
-                    <li>
-                      <%= booking.bike_ad.model %> -
-                      <% if booking.pending == true %>
-                        en attente d'approbation par <%= booking.bike_ad.user.first_name %> -
-                      <% else %>
-                        réservation acceptée -
-                      <% end %>
-                      <%= link_to 'Annuler', destroy_booking_path(booking, flash_notice: 'Votre réservation a bien été annulée.'), method: :delete, data: { confirm: 'Êtes-vous sûr ?' } %>
-                    </li>
-                  <% end %>
-                </ul>
+
 
                 <p>Mes annonces</p>
                 <ul>
