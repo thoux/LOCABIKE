@@ -1,6 +1,12 @@
 <div class="mb-5">
   <h1 class="my-0">Trouvez votre prochaine moto</h1>
-  <p>+ de <%= @bike_ads.count %> à louer sur toute la France</p>
+  <% if @bike_ads.empty? %>
+    <p> ⚠️ Aucun résultat correspond à vos critères de recherche.</p>
+    <h4>Lancer une nouvelle recherche</h4>
+    <%= render "components/search_form" %>
+  <% else %>
+    <p>+ de <%= @bike_ads.count %> à louer sur toute la France</p>
+  <% end %>
 </div>
 
 <%= render 'components/bike_card', locals: { bike_ads: @bike_ads } %>
