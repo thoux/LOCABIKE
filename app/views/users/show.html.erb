@@ -5,110 +5,59 @@
       background-image: url(<%=cloudinary_url(@user.banner.key)%>);">
       <div class="container">
 
-
-
-            <!-- <div class="position-relative mt-n9">
-              <a href="#!" class="position-absolute top-0 right-0 mr-2" data-toggle="tooltip" data-placement="top"
-                title="Verified">
-                <img src="../assets/images/checked-mark.svg" alt="" height="30" width="30" />
-              </a>
-            </div> -->
-
-
               <div class="d-flex align-items-center">
               <% if @user.avatar.attached? %>
-              <%= cl_image_tag @user.avatar.key, crop: :fill, class:'avatar-large' %>
+              <%= cl_image_tag @user.avatar.key, crop: :fill, class:'avatar-large border' %>
               <% end %>
 
-              <h3 class="ml-2 mb-0 font-weight-bold mr-2"><%= "#{@user.first_name} #{@user.last_name}" %></h3>
+              <h3 class="ml-2 mb-0 font-weight-bold mr-2 text-white"><%= "#{@user.first_name} #{@user.last_name}" %></h3>
               </div>
 
-
         </div>
     </div>
-    <%end%>
-
-  <!-- User info -->
-  <div class="card p-lg-2 pt-2 pt-lg-0 rounded-0 border-0">
-    <div class="container">
-      <div class="row align-items-center">
-        <div class="col-lg-4 col-md-4 col-12">
-          <div class="font-size-md mt-4 mt-lg-0 pb-2 pb-lg-0 d-lg-flex justify-content-end">
-            <a href="#!" class="mdi mdi-youtube text-muted mr-2"></a>
-            <a href="#!" class="mdi mdi-link-variant text-muted mr-2"></a>
-            <a href="#!" class="mdi mdi-instagram text-muted mr-2"></a>
-            <a href="#!" class="mdi mdi-facebook text-muted mr-2"></a>
-            <a href="#!" class="mdi mdi-twitter text-muted"></a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+  <%end%>
 
   <!-- Content -->
   <div class="container">
-  <div class="py-5 py-md-5">
+    <div class="py-5 py-md-5">
       <div class="row">
+
         <div class="col-lg-3 col-md-4 col-12">
-          <!-- Card -->
-          <div class="card border-0 mb-4">
-            <!-- Card body -->
-            <div class="card-body">
-              <h4>A propos de <%= @user.first_name %></h4>
-              <p>
-                <%= @user.bio || "Cet utilisateur n'a pas encore de description" %>
-              </p>
 
+            <!-- Card -->
+            <div class="card border-0 mb-4">
+              <!-- Card body -->
+              <div class="card-body">
+                <h4>A propos de <%= @user.first_name %></h4>
+                <p>
+                  <%= @user.bio || "Cet utilisateur n'a pas encore de description" %>
+                </p>
+
+              </div>
             </div>
-          </div>
-          <!-- Card -->
-          <div class="card border-0 mb-4 mb-lg-0">
-            <!-- Card body -->
 
-          </div>
         </div>
+
         <div class="col-lg-9 col-md-8 col-12">
-          <!-- Card -->
-          <% if @user == current_user %>
+            <!-- Card -->
 
-          <div class="card border-0">
-            <!-- Card header -->
+            <div class="card border-0">
+              <!-- Card header -->
 
-            <div class="card-header">
-              <h4 class="mb-0">
-                Mes annonces (<%= @user.bike_ads.count %>)<span class="text-muted font-size-xs"></span>
-              </h4>
+              <div class="card-header bg-white">
+                <h4 class="mb-0">
+                  Mes annonces (<%= @user.bike_ads.count %>)<span class="text-muted font-size-xs"></span>
+                </h4>
+              </div>
+
             </div>
 
-
-            <%= render 'components/bike_card', locals: { bike_ads: @bike_ads } %>
-            <!-- Card body -->
-
-                    <div>
-                      <!-- Dropdown -->
-                      <span class="dropdown dropleft">
-                        <a class="text-muted text-decoration-none" href="#!" role="button" id="courseDropdown"
-                          data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                          <i class="fe fe-more-vertical"></i>
-                        </a>
-                        <span class="dropdown-menu" aria-labelledby="courseDropdown">
-                          <span class="dropdown-header">Share</span>
-                          <a class="dropdown-item" href="#!"><i
-                              class="fab fa-facebook dropdown-item-icon"></i>Facebook</a>
-                          <a class="dropdown-item" href="#!"><i
-                              class="fab fa-twitter dropdown-item-icon"></i>Twitter</a>
-                          <a class="dropdown-item" href="#!"><i class="fab fa-linkedin dropdown-item-icon"></i>Linked
-                            In</a>
-                          <a class="dropdown-item" href="#!"><i class="fas fa-copy dropdown-item-icon"></i>Copy Link</a>
-                        </span>
-                      </span>
-                    </div>
+            <div class="mt-4">
+              <%= render 'components/bike_card', locals: { bike_ads: @bike_ads } %>
             </div>
-          </div>
-          <% end %>
+
         </div>
-
-    </div>
+            
+      </div>
     </div>
   </div>
-
