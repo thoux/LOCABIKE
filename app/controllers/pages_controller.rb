@@ -5,7 +5,7 @@ class PagesController < ApplicationController
     @homepage = true
     @disable_container = true
     @disable_margins = true
-    @bike_ads = BikeAd.available.ordered_by_date.limit(4)
+    @bike_ads = BikeAd.available.ordered_by_date.limit(3)
   end
 
   def show

@@ -14,7 +14,7 @@ class BikeAdPolicy < ApplicationPolicy
   end
 
   def update?
-    record.user == user
+    record.user == user && (record.bookings.last.nil? || (record.bookings.last.end_date < Date.today))
   end
 
   def destroy?
