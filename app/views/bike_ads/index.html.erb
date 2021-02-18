@@ -1,12 +1,21 @@
-<div class="mb-5">
-  <h1 class="my-0">Trouvez votre prochaine moto</h1>
-  <% if @bike_ads.empty? %>
-    <p> ⚠️ Aucun résultat correspond à vos critères de recherche.</p>
-    <h4>Lancer une nouvelle recherche</h4>
-    <%= render "components/search_form" %>
-  <% else %>
-    <p>+ de <%= @bike_ads.count %> à louer sur toute la France</p>
-  <% end %>
-</div>
+<div class="row">
+    <div class="col-12 col-lg-8" style="margin-top: 6rem; margin-bottom: 2.4rem;">
+      <h1 class="my-0">Trouvez votre prochaine moto</h1>
+      <% if @bike_ads.empty? %>
+        <p> ⚠️ Aucun résultat correspond à vos critères de recherche.</p>
+        <h4>Lancer une nouvelle recherche</h4>
+        <%= render "components/search_form" %>
+      <% else %>
+        <p>+ de <%= @bike_ads.count %> à louer sur toute la France</p>
+      <% end %>
+      <%= render 'components/bike_card', locals: { bike_ads: @bike_ads } %>
+    </div>
 
-<%= render 'components/bike_card', locals: { bike_ads: @bike_ads } %>
+    <div class="col-12 col-lg-4">
+      <div id="map" class="map-container"
+      data-markers="<%= @markers.to_json %>"
+      data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
+    </div>
+
+  </div>
+</div>

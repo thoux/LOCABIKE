@@ -18,14 +18,10 @@
     <% if @bike_ad.id.nil? %>
       <%= f.submit 'Ajouter', class: 'btn btn-primary mt-3' %>
     <% else %>
-      <% if @bike_ad.bookings.last.nil? || (@bike_ad.bookings.last.end_date < Date.today) %>
-        <div class="mb-4">
-          <span class="text-muted">Cochez cette case si votre moto est disponible à la location</span>
-          <%= f.input :available, label: false %>
-        </div>
-      <% else %>
-        <div class="text-muted">Une réservation est actuellement en cours sur votre annonce. Si vous souhaitez modifier sa disponibilité vous devez au préalable décider de la suite à donner à cette réservation, en cliquant <%= link_to 'ici', user_path(@bike_ad.user) %>, ou attendre la fin de celle-ci.</div>
-      <% end %>
+      <div class="mb-4">
+        <span class="text-muted">Cochez cette case si votre moto est disponible à la location</span>
+        <%= f.input :available, label: false %>
+      </div>
       <%= f.submit 'Mettre à jour', class: 'btn btn-primary mt-3' %>
     <% end %>
   <% end %>

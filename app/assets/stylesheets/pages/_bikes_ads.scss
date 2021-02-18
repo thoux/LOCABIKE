@@ -25,7 +25,7 @@
   &.search {
     border: 1px solid $gray;
   }
-  &.sport-catg {
+  &.sportive-catg {
     border: 1px solid $gray;
   }
   &.enduro-catg {
@@ -34,12 +34,15 @@
   &.cross-catg {
     border: 1px solid $yellow;
   }
+  &.roadster-catg {
+    border: 1px solid $red;
+  }
   &:hover {
     color: $muted;
   }
 }
 
-.sport-catg {
+.sportive-catg {
   background-color: $gray;
 }
 
@@ -49,6 +52,10 @@
 
 .cross-catg {
   background-color: $yellow;
+}
+
+.roadster-catg {
+  background-color: $red;
 }
 
 .bike-ad-photo {
@@ -63,9 +70,21 @@
   color: $primary;
 }
 
+.map-container {
+  width: 100%;
+  height: 100vh;
+  margin-top: 3.5rem;
+  position: sticky !important;
+  display: none;
+  top: 0;
+}
+
 @media (min-width: 640px) {
   .bike-cards-grid {
     grid-template-columns: repeat(2, 1fr);
+  }
+  .map-container {
+    display: block;
   }
 }
 
