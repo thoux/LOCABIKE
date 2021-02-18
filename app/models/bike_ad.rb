@@ -12,5 +12,12 @@ class BikeAd < ApplicationRecord
   validates :model, :brand, :category, :year, :address, :price_per_day, :description, presence: true
   validates :brand, inclusion: { in: BRANDS }
   validates :category, inclusion: { in: CATEGORIES }
+
+
+  geocoded_by :address
+  after_validation :geocode, if: :will_save_change_to_address?
+
+
   validates :photo, content_type: ['image/png', 'image/jpg', 'image/jpeg']
+
 end

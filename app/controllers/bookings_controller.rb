@@ -13,6 +13,7 @@ class BookingsController < ApplicationController
     @booking = Booking.new(booking_params)
     @booking.bike_ad = @bike_ad
     @booking.user = current_user
+    @booking.price = ((@booking.end_date - @booking.start_date) + 1) * @booking.bike_ad.price_per_day
     authorize @booking
 
     if @booking.save
@@ -45,7 +46,7 @@ class BookingsController < ApplicationController
   end
 
   def booking_params
-    params.require(:booking).permit(:start_date, :end_date)
+    params.require(:booking).permit(:start_date, :end_date, :price)
   end
 
   def check_bike_available

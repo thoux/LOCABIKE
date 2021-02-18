@@ -1,11 +1,17 @@
 .avatar {
+<<<<<<< HEAD
   width: 80px;
+=======
+  width: 40px;
+  height: 40px;
+>>>>>>> 3c7220b37173e27b43e564b16bfca0f3ccfa61a7
   border-radius: 50%;
   height: 80px;
   object-fit: cover;
 }
 .avatar-large {
-  width: 56px;
+  width: 64px;
+  height: 64px;
   border-radius: 50%;
 }
 .avatar-bordered {

@@ -12,17 +12,14 @@ class ApplicationController < ActionController::Base
   protected
 
   def configure_permitted_parameters
-
-    devise_parameter_sanitizer.permit(:sign_up, keys:[:first_name, :address,:bio, :avatar, :banner] )
-    devise_parameter_sanitizer.permit(:account_update, keys:[:first_name, :address, :avatar, :banner] )
-
+    devise_parameter_sanitizer.permit(:sign_up, keys:[:first_name, :address, :bio, :avatar, :banner] )
+    devise_parameter_sanitizer.permit(:account_update, keys:[:first_name, :address, :bio, :avatar, :banner] )
   end
 
   private
 
   def skip_pundit?
     devise_controller? || params[:controller] =~ /(^(rails_)?admin)|(^pages$)/
-
   end
 
   def user_not_authorized
@@ -30,5 +27,3 @@ class ApplicationController < ActionController::Base
     redirect_to(request.referrer || root_path)
   end
 end
-
-

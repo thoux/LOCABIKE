@@ -17,7 +17,7 @@
 
               <div class="d-flex align-items-center">
               <% if @user.avatar.attached? %>
-              <%= cl_image_tag @user.avatar.key, crop: :fill, class:'avatar' %>
+              <%= cl_image_tag @user.avatar.key, crop: :fill, class:'avatar-large' %>
               <% end %>
 
               <h3 class="ml-2 mb-0 font-weight-bold mr-2"><%= "#{@user.first_name} #{@user.last_name}" %></h3>

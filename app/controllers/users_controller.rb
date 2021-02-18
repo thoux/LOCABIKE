@@ -20,11 +20,6 @@ class UsersController < ApplicationController
   end
 
   def user_params
-
-  params.require(:user).permit(:banner, :avatar)
-
-
+    params.require(:user).permit(:banner, :avatar, :bio)
   end
-
-
 end
