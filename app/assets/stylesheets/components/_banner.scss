@@ -3,6 +3,7 @@
   align-items: center;
   background-size: cover;
   background-position: center !important;
+
   &.home-banner {
     padding-top: 3.6rem;
     background-image: linear-gradient(to right, rgba(0,0,0,0.4),rgba(0,0,0,0)), asset_url('home-banner.jpg');
@@ -27,3 +28,10 @@
   text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
 }
 
+.user-banner {
+    margin-top: 50px;
+    padding-top: 110px;
+    background-size: cover;
+    height: 200px;
+    background-position: center;
+    }
