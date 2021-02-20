@@ -19,9 +19,18 @@ class BikeAdsController < ApplicationController
         infoWindow: render_to_string(partial: "info_window", locals: { bike_ad: bike_ad })
       }
     end
+    if @bike_ads.empty?
+      @title_seo = "Aucune moto disponible à la location"
+    elsif @bike_ads.count == 1
+      @title_seo = "Une moto disponible à la location"
+    else
+      @title_seo = "#{@bike_ads.count} motos disponibles à la location"
+    end
+
   end
 
   def new
+    @title_seo = "Ajoutez une moto à louer"
     @bike_ad = BikeAd.new
     authorize @bike_ad
   end
@@ -38,6 +47,7 @@ class BikeAdsController < ApplicationController
   end
 
   def show
+    @title_seo = "#{@bike_ad.model} à louer sur Locabike"
     @booking = Booking.new
     authorize @booking
   end
@@ -45,6 +55,7 @@ class BikeAdsController < ApplicationController
   def edit; end
 
   def update
+    @title_seo = "Editez votre annonce"
     if @bike_ad.update(params_bike_ad)
       redirect_to bike_ad_path(@bike_ad), notice: "Vos modification ont bien été prises en compte"
     else
