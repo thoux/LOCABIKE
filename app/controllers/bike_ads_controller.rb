@@ -46,7 +46,7 @@ class BikeAdsController < ApplicationController
 
   def update
     if @bike_ad.update(params_bike_ad)
-      redirect_to bike_ad_path(@bike_ad), notice: "Vos modification ont bien été prises en compte"
+      redirect_to bike_ad_path(@bike_ad), notice: "Vos modifications ont bien été prises en compte"
     else
       render :edit
     end

@@ -20,11 +20,19 @@
     <%= f.input :first_name %>
     <%= f.input :last_name %>
     <p class="mb-2">Choisissez votre avatar</p>
-    <%= f.input :avatar %>
+    <div>
+      <%= f.input :avatar, as: :file %>
+      <div class="file-name"></div>
+      <div class="target-preview"></div>  
+    </div>
     <%= f.input :address %>
     <%= f.input :bio %>
     <p class="mb-2">Sélectionnez une bannière pour votre page de profil</p>
-    <%= f.input :banner %>
+    <div>
+      <%= f.input :banner, as: :file %>
+      <div class="file-name"></div>
+      <div class="target-preview"></div>  
+    </div>
     <%= f.input :current_password,
                 hint: "we need your current password to confirm your changes",
                 required: true,

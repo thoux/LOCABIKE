@@ -24,7 +24,6 @@ const dateChange = (dateInput) => {
       const diffDays = Math.round((endDateValue - startDateValue) / oneDay) + 1;
       const rentalPrice = diffDays * price;
       const serviceFees = Math.round(rentalPrice * 0.03);
-      console.log(Math.abs((endDateValue - startDateValue) / oneDay));
       if (diffDays > 0) {
         priceDivHTML(priceDiv, price, diffDays, rentalPrice, serviceFees);
       }

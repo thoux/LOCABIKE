@@ -16,10 +16,27 @@ const changeFileInput = () => {
         // Change label
         fileInput.previousSibling.innerText = 'Modifier la photo';
         // Remove image previous image preview
-        const imagePreview = document.querySelector('.bike-ad-photo')
+        const imagePreview = document.querySelector('.bike-ad-photo');
+        // const targetPreview = document.querySelector('.target-preview');
+        const targetPreview = fileInput.parentNode.nextElementSibling.nextElementSibling;
         if (imagePreview) {
           // console.log(imagePreview)
           imagePreview.style.display = "none";
+        }
+        if ( /\.(jpe?g|png|gif)$/i.test(file.name) ) {
+          const reader = new FileReader();
+    
+          reader.addEventListener("load", (e) => {
+            targetPreview.innerHTML = '';
+            const image = new Image();
+            image.style = "width: 100%;";
+            image.classList = "my-2";
+            image.title = file.name;
+            image.src = e.srcElement.result;
+            targetPreview.appendChild( image );
+          }, false);
+    
+          reader.readAsDataURL(file);
         }
       });
     });

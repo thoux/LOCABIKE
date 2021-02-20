@@ -9,8 +9,8 @@
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown"><%= current_user.first_name %></a>
             <div class="dropdown-menu">
-              <%= link_to 'Voir mon admin', user_profil_path(current_user),class: "dropdown-item"  %>
-              <%= link_to 'Voir mon profil', user_path(current_user),class: "dropdown-item"  %>
+              <%= link_to 'Mon admin', user_profil_path(current_user),class: "dropdown-item"  %>
+              <%= link_to 'Mon profil', user_path(current_user),class: "dropdown-item"  %>
               <%= link_to 'Editer', edit_user_registration_path(current_user),class: "dropdown-item" %>
               <%= link_to 'Déconnexion', destroy_user_session_path, method: :delete,class: "dropdown-item" %>
             </div>
