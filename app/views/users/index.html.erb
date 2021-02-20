@@ -1,7 +1,30 @@
-<h1>Tous les utilisateurs</h1>
+<h1 class="mb-0">Les LocaBikers</h1>
+<p>Faites connaissance avec eux.</p>
 
-<ul>
+<div class="cards-grid">
   <% @users.each do |user| %>
-    <li> <%= link_to user.first_name, user_path(user) %></li>
+    <%= link_to user_path(user) do %>
+    <div class="card rounded-0 default-card">
+      <div class="default-card-header" style="background-image: url(<%=
+        if user.banner.attached?
+          cloudinary_url(user.banner.key, quality: :auto, crop: :fill)
+        else
+          asset_url('template.jpg')
+        end
+        %>)">
+          <div class="default-card-stamp">
+            <% if user.avatar.attached? %>
+              <%= cl_image_tag user.avatar.key, quality: :auto, crop: :fill, width: 100, height: 100, class:"avatar-large border" %>
+            <% else %>
+              <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar-large", alt: "", title: "#{user.first_name}" %>
+            <% end %> 
+          </div>
+        </div>
+        <div class="card-body">
+          <%= user.first_name %>
+        </div>
+    </div>
+    <% end %>
   <% end %>
-</ul>
+</div>
+
