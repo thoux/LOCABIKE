@@ -18,10 +18,13 @@
                 required: false,
                 input_html: { autocomplete: "new-password" } %>
     <%= f.input :first_name %>
+    <%= f.input :last_name %>
+    <p class="mb-2">Choisissez votre avatar</p>
     <%= f.input :avatar %>
-    <%= f.input :banner %>
     <%= f.input :address %>
     <%= f.input :bio %>
+    <p class="mb-2">Sélectionnez une bannière pour votre page de profil</p>
+    <%= f.input :banner %>
     <%= f.input :current_password,
                 hint: "we need your current password to confirm your changes",
                 required: true,
@@ -41,5 +44,3 @@
 <p>Pas heureux chez nous ?</p>
 
 <%= link_to "Supprimer mon compte", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, class: "btn btn-danger" %></p>
-
-<%= link_to "Back", :back %>

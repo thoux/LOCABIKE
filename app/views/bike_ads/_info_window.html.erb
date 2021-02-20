@@ -1,13 +1,13 @@
     <%= link_to bike_ad_path(bike_ad) do %>
-      <div class="card border-0 rounded-0 bike-card ">
-        <div class="bike-card-header" style="background-image: url(<%= 
+      <div class="card border-0 rounded-0 default-card ">
+        <div class="default-card-header" style="background-image: url(<%= 
         if bike_ad.photo.attached?
           cloudinary_url(bike_ad.photo.key, quality: :auto, crop: :fill)
         else
           asset_url('template.jpg')
         end 
         %>)">
-          <div class="bike-card-catg <%= bike_ad.category.downcase %>-catg"><%= bike_ad.category %></div>
+          <div class="default-card-stamp <%= bike_ad.category.downcase %>-catg"><%= bike_ad.category %></div>
         </div>
         <div class="card-body bike-card-body">
           <div class="bike-card-model">
