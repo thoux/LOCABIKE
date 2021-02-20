@@ -8,7 +8,8 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :users, only: [:index, :show, :my_profile]
+  resources :users, only: [:index, :show]
+  get 'users/:id/my_profil', to: 'users#my_profil', as: :user_profil
   delete 'bookings/:id', to: 'bookings#destroy', as: :destroy_booking
   patch 'bookings/:id', to: 'bookings#approve', as: :approve_booking
 

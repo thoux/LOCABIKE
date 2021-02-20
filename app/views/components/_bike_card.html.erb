@@ -2,7 +2,8 @@
 
   <% @bike_ads.each do |bike_ad| %>
     <%= link_to bike_ad_path(bike_ad) do %>
-      <div class="card border-0 rounded-0 default-card" style="<%= 'opacity: 0.5;' unless bike_ad.available %>"> 
+
+      <div class="card border-0 rounded-0 default-card" style="<%= 'opacity: 0.5;' unless bike_ad.available %>">
         <div class="default-card-header" style="background-image: url(<%=
         if bike_ad.photo.attached?
           cloudinary_url(bike_ad.photo.key, quality: :auto, crop: :fill)
@@ -27,3 +28,4 @@
     <% end %>
   <% end %>
 </div>
+

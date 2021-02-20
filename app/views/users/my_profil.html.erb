@@ -1,0 +1,68 @@
+<h1>Bienvenue dans votre administration <%= @user.first_name %></h1>
+<p>C'est ici que vous pouvez gérer vos annonces et vos réservations.</p>
+
+<h3 class="mt-4">Mes réservations (<%= @bookings.count %>)</h3>
+
+   <% if @bookings.empty? %>
+    Vous n'avez pas encore de réservation
+   <% else %>
+    <table class="table">
+      <tbody class="bg-white border">
+        <% @bookings.each do |booking| %>
+        <tr>
+          <td class="align-middle"><%= booking.user.first_name %> veut réserver votre <%= link_to booking.bike_ad.model, bike_ad_path(booking.bike_ad) %></td>
+          <td class="align-middle">Du <%= booking.start_date %> au <%= booking.end_date %></td>
+          <td class="align-middle"><%= booking.price %>€</td>
+          <td class="align-middle"><%= (booking.price * 0.03).round %>€ <small>de commission</small></td>
+          <% if booking.pending == true %>
+          <td class="text-right">
+            <%= link_to 'Approuver', approve_booking_path(booking), class: 'btn btn-outline-primary', method: 'patch' %>
+            <%= link_to 'Refuser', destroy_booking_path(booking, flash_notice: 'Votre refus a bien été pris en compte pour cette réservation.'), method: :delete, data: { confirm: 'Êtes-vous sûr ?' }, class: 'btn btn-outline-danger' %>
+          </td>
+          <% else %>
+          <td>
+            Réservation approuvée
+          </td>
+          <% end %>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+   <% end %>
+
+
+<h3 class="mt-4">Mes demandes de réservation</h3>
+
+   <% if current_user.bookings.empty? %>
+    Vous n'avez pas encore fait de demande de réservation
+   <% end %>
+
+<table class="table">
+  <tbody class="bg-white border">
+    <% current_user.bookings.each do |booking|%>
+    <tr>
+      <td class="align-middle">Demande de réservation pour <%= link_to booking.bike_ad.model, bike_ad_path(booking.bike_ad) %></td>
+      <td class="align-middle">Du <%= booking.start_date %> au <%= booking.end_date %></td>
+      <td class="align-middle"><%= booking.price %>€</td>
+        <% if booking.pending == true %>
+        <td class="text-right">
+          <%= link_to 'Annuler', destroy_booking_path(booking, flash_notice: 'Votre annulation a bien été pris en compte pour cette réservation.'), method: :delete, data: { confirm: 'Êtes-vous sûr ?' }, class: 'btn btn-outline-danger' %>
+        </td>
+          <% else %>
+        <td>
+          Réservation approuvée.
+        </td>
+        <% end %>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<h3>Mes annonces</h3>
+<div class="container">
+  <% if @bike_ads.present? %>
+    <%= render "components/bike_card" %>
+  <% else %>
+    Vous n'avez pas de moto, <%= link_to 'ajoutez en une maintenant !', new_bike_ad_path %>
+  <% end %>
+</div>
