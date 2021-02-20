@@ -29,7 +29,7 @@ class BookingsController < ApplicationController
   def destroy
     @user = current_user
     @booking.destroy
-    redirect_to user_path(@user), notice: params[:flash_notice]
+    redirect_to user_profil_path(@user), notice: params[:flash_notice]
   end
 
   def approve
