@@ -20,7 +20,7 @@
             <%= link_to 'Refuser', destroy_booking_path(booking, flash_notice: 'Votre refus a bien été pris en compte pour cette réservation.'), method: :delete, data: { confirm: 'Êtes-vous sûr ?' }, class: 'btn btn-outline-danger' %>
           </td>
           <% else %>
-          <td>
+          <td class="align-middle">
             Réservation approuvée
           </td>
           <% end %>
@@ -49,7 +49,7 @@
           <%= link_to 'Annuler', destroy_booking_path(booking, flash_notice: 'Votre annulation a bien été pris en compte pour cette réservation.'), method: :delete, data: { confirm: 'Êtes-vous sûr ?' }, class: 'btn btn-outline-danger' %>
         </td>
           <% else %>
-        <td>
+        <td class="align-middle">
           Réservation approuvée.
         </td>
         <% end %>
