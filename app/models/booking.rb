@@ -21,12 +21,12 @@ class Booking < ApplicationRecord
   def start_date_greater_than_yesterday?
     return if start_date.blank?
 
-    errors.add(:start_date, "must start from today or higher") if start_date < Date.today
+    errors.add(:start_date, "doit commencer à partir d'aujourd'hui ou plus") if start_date < Date.today
   end
 
   def end_date_after_start_date?
     return if end_date.blank? || start_date.blank?
 
-    errors.add(:end_date, "must be after the start date") if end_date <= start_date
+    errors.add(:end_date, "doit être supérieure à la date de début") if end_date <= start_date
   end
 end
