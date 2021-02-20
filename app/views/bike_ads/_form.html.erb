@@ -15,6 +15,7 @@
       <%= f.input :photo, as: :file, label: 'Ajouter une photo' %>
     <% end %>
     <div class="file-name"></div>
+    <div class="target-preview"></div>
     <% if @bike_ad.id.nil? %>
       <%= f.submit 'Ajouter', class: 'btn btn-primary mt-3' %>
     <% else %>

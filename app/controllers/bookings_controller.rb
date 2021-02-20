@@ -53,6 +53,6 @@ class BookingsController < ApplicationController
   end
 
   def check_bike_available
-    redirect_to root_path, alert: "La moto est reservée" unless @bike_ad.available == true
+    redirect_to root_path, alert: "La moto est actuellement reservée" unless @bike_ad.available == true
   end
 end
