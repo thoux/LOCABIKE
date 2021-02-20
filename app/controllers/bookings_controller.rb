@@ -13,11 +13,13 @@ class BookingsController < ApplicationController
     @booking = Booking.new(booking_params)
     @booking.bike_ad = @bike_ad
     @booking.user = current_user
-    @booking.price = ((@booking.end_date - @booking.start_date) + 1) * @booking.bike_ad.price_per_day
+    if @booking.end_date && @booking.start_date
+      @booking.price = ((@booking.end_date - @booking.start_date) + 1) * @booking.bike_ad.price_per_day
+    end
     authorize @booking
 
     if @booking.save
-      redirect_to user_path(@booking.user), notice: "Votre demande de réservation a été transmise à #{@bike_ad.user.first_name}"
+      redirect_to user_profil_path(@booking.user), notice: "Votre demande de réservation a été transmise à #{@bike_ad.user.first_name}"
     else
       render :new
     end
@@ -31,7 +33,7 @@ class BookingsController < ApplicationController
 
   def approve
     @booking.update(pending: false)
-    redirect_to user_path(@booking.bike_ad.user), notice: 'Votre accord a bien été pris en compte pour cette réservation'
+    redirect_to user_profil_path(@booking.bike_ad.user), notice: 'Votre accord a bien été pris en compte pour cette réservation'
   end
 
   private

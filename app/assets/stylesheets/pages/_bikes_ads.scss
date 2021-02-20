@@ -1,4 +1,4 @@
-.bike-cards-grid {
+.cards-grid {
   display: grid;
   grid-template-columns: repeat(1, 1fr);
   gap: 2rem;
@@ -76,20 +76,20 @@
   margin-top: 3.5rem;
   position: sticky !important;
   display: none;
-  top: 0;
+  top: 3.5rem;
 }
 
 @media (min-width: 640px) {
-  .bike-cards-grid {
+  .cards-grid {
     grid-template-columns: repeat(2, 1fr);
-  }
-  .map-container {
-    display: block;
   }
 }
 
 @media (min-width: 1024px) {
-  .bike-cards-grid {
+  .cards-grid {
     grid-template-columns: repeat(3, 1fr);
+  }
+  .map-container {
+    display: block;
   }
 }

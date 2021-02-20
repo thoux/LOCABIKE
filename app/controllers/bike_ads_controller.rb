@@ -4,9 +4,11 @@ class BikeAdsController < ApplicationController
 
   def index
     @disable_margins = true
-    if params[:query].present? #&& params[:city].present?
-      sql_query = "model ILIKE :query OR brand ILIKE :query" #AND address ILIKE :query
-      @bike_ads = policy_scope(BikeAd).where(sql_query, query: "%#{params[:query]}%")
+    if params[:query].present?
+      sql_query = "model ILIKE :query OR brand ILIKE :query OR category ILIKE :query"
+      @bike_ads = policy_scope(BikeAd).where(sql_query, query: "%#{params[:query]}%").ordered_by_date
+    elsif params[:city].present?
+      @bike_ads = policy_scope(BikeAd).near(params[:city].to_s, 10).ordered_by_date
     else
       @bike_ads = policy_scope(BikeAd).ordered_by_date
     end
@@ -29,7 +31,7 @@ class BikeAdsController < ApplicationController
     authorize @bike_ad
     @bike_ad.user = current_user
     if @bike_ad.save
-      redirect_to bike_ad_path(@bike_ad)
+      redirect_to bike_ad_path(@bike_ad), notice: "Votre annonce a bien été créée"
     else
       render :new
     end
@@ -44,7 +46,7 @@ class BikeAdsController < ApplicationController
 
   def update
     if @bike_ad.update(params_bike_ad)
-      redirect_to bike_ad_path(@bike_ad)
+      redirect_to bike_ad_path(@bike_ad), notice: "Vos modification ont bien été prises en compte"
     else
       render :edit
     end

@@ -11,6 +11,7 @@ class UsersController < ApplicationController
     @disable_margins = true
     @user = User.find(params[:id])
     authorize @user
+    @bike_ads = @user.bike_ads.order('available DESC')
   end
 
   def my_profil
