@@ -8,9 +8,21 @@
                 required: true %>
     <%= f.input :last_name,
                 required: true %>
+    <p class="mb-2">Choisissez votre avatar</p>
+    <div>
+      <%= f.input :avatar, as: :file %>
+      <div class="file-name"></div>
+      <div class="target-preview"></div>  
+    </div>
     <%= f.input :address,
                 input_html: { class: "input_address" },
                 required: true %>
+    <p class="mb-2">Sélectionnez une bannière pour votre page de profil</p>
+    <div>
+      <%= f.input :banner, as: :file %>
+      <div class="file-name"></div>
+      <div class="target-preview"></div>  
+    </div>
     <%= f.input :bio %>
     <%= f.input :email,
                 required: true,
@@ -23,8 +35,6 @@
     <%= f.input :password_confirmation,
                 required: true,
                 input_html: { autocomplete: "new-password" } %>
-    <%= f.input :avatar, as: :file %>
-    <%= f.input :banner, as: :file %>
   </div>
 
   <div class="form-actions">

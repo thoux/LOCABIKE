@@ -11,9 +11,9 @@
         <% @bookings.each do |booking| %>
         <tr>
           <td class="align-middle"><%= booking.user.first_name %> veut réserver votre <%= link_to booking.bike_ad.model, bike_ad_path(booking.bike_ad) %></td>
-          <td class="align-middle">Du <%= booking.start_date %> au <%= booking.end_date %></td>
-          <td class="align-middle"><%= booking.price %>€</td>
-          <td class="align-middle"><%= (booking.price * 0.03).round %>€ <small>de commission</small></td>
+          <td class="align-middle">Du <%= booking.start_date.strftime("%d/%m/%Y") %><br> au <%= booking.end_date.strftime("%d/%m/%Y") %></td>
+          <td class="align-middle"><strong><%= booking.price %>€</strong></td>
+          <td class="align-middle text-muted"><%= (booking.price * 0.03).round %>€ <small>de commission</small></td>
           <% if booking.pending == true %>
           <td class="text-right">
             <%= link_to 'Approuver', approve_booking_path(booking), class: 'btn btn-outline-primary', method: 'patch' %>
@@ -42,7 +42,7 @@
     <% current_user.bookings.each do |booking|%>
     <tr>
       <td class="align-middle">Demande de réservation pour <%= link_to booking.bike_ad.model, bike_ad_path(booking.bike_ad) %></td>
-      <td class="align-middle">Du <%= booking.start_date %> au <%= booking.end_date %></td>
+      <td class="align-middle">Du <%= booking.start_date.strftime("%d/%m/%Y") %><br> au <%= booking.end_date.strftime("%d/%m/%Y") %></td>
       <td class="align-middle"><%= booking.price %>€</td>
         <% if booking.pending == true %>
         <td class="text-right">
@@ -59,10 +59,9 @@
 </table>
 
 <h3>Mes annonces</h3>
-<div class="container">
-  <% if @bike_ads.present? %>
-    <%= render "components/bike_card" %>
-  <% else %>
-    Vous n'avez pas de moto, <%= link_to 'ajoutez en une maintenant !', new_bike_ad_path %>
-  <% end %>
-</div>
+<% if @bike_ads.present? %>
+  <%= render "components/bike_card" %>
+<% else %>
+  Vous n'avez pas de moto, <%= link_to 'ajoutez en une maintenant !', new_bike_ad_path %>
+<% end %>
+
