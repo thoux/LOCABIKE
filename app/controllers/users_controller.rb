@@ -16,6 +16,7 @@ class UsersController < ApplicationController
   def my_profil
     @user = User.find(params[:id])
     @bike_ads = @user.bike_ads
+    @bookings = Booking.joins(:bike_ad).where('bike_ads.user_id = ?', current_user.id)
     authorize @user
   end
 
