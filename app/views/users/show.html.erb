@@ -1,21 +1,28 @@
   <!-- Bg -->
 
-  <% if @user.banner.attached? %>
-    <div class="user-banner" style="
-      background-image: url(<%=cloudinary_url(@user.banner.key)%>);">
-      <div class="container">
 
-              <div class="d-flex align-items-center">
-              <% if @user.avatar.attached? %>
+  <div class="user-banner" style="background-image: url(<%=
+      if @user.banner.attached?
+        cloudinary_url(@user.banner.key, quality: :auto, crop: :fill)
+      else
+        asset_url('template.jpg')
+      end
+      %>)">
+    <div class="container">
+
+            <div class="d-flex align-items-center">
+            <% if @user.avatar.attached? %>
               <%= cl_image_tag @user.avatar.key, crop: :fill, class:'avatar-large border' %>
-              <% end %>
+            <% else %>
+              <%= image_tag "avatars/avatar-template.png", class: "avatar-large border", alt: "", title: "#{@user.first_name}" %>
+            <% end %>
 
-              <h3 class="ml-2 mb-0 font-weight-bold mr-2 text-white"><%= "#{@user.first_name} #{@user.last_name}" %></h3>
-              </div>
+            <h3 class="ml-2 mb-0 font-weight-bold mr-2 text-white username"><%= "#{@user.first_name} #{@user.last_name}" %></h3>
+            </div>
 
-        </div>
-    </div>
-  <%end%>
+      </div>
+  </div>
+
 
   <!-- Content -->
   <div class="container">
@@ -28,10 +35,14 @@
             <div class="card border-0 mb-4">
               <!-- Card body -->
               <div class="card-body">
-                <h4>A propos de <%= @user.first_name %></h4>
-                <p>
-                  <%= @user.bio || "Cet utilisateur n'a pas encore de description" %>
-                </p>
+                <h4>&Agrave; propos</h4>
+                <span>
+                  <% if @user.bio.size.positive? %>
+                    <%= @user.bio %>
+                  <% else %>
+                    Cet utilisateur n'a pas encore de description
+                  <% end %>
+                </span>
 
               </div>
             </div>
@@ -44,10 +55,8 @@
             <div class="card border-0">
               <!-- Card header -->
 
-              <div class="card-header bg-white">
-                <h4 class="mb-0">
-                  Mes annonces (<%= @user.bike_ads.count %>)<span class="text-muted font-size-xs"></span>
-                </h4>
+              <div class="d-flex align-items-center card-header bg-white">
+                <h2 class="mb-0">Mes annonces</h2>&nbsp;<span class="text-muted" style="font-size: 18px">(<%= @user.bike_ads.count %>)</span>
               </div>
 
             </div>

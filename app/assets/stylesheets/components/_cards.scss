@@ -1,11 +1,10 @@
-.bike-card {
+.default-card {
   color: $gray;
   border-radius: $border-radius;
   box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.2);
-
 }
 
-.bike-card-header {
+.default-card-header {
   position: relative;
   background-position: center;
   background-size: cover;
@@ -13,7 +12,7 @@
   font-size: 0.8rem;
 }
 
-.bike-card-catg {
+.default-card-stamp {
   position: absolute;
   top: 1rem;
   right: 1rem;

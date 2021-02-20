@@ -2,11 +2,10 @@
     <div class="col-12 col-lg-8" style="margin-top: 6rem; margin-bottom: 2.4rem;">
       <h1 class="my-0">Trouvez votre prochaine moto</h1>
       <% if @bike_ads.empty? %>
-        <p> ⚠️ Aucun résultat correspond à vos critères de recherche.</p>
-        <h4>Lancer une nouvelle recherche</h4>
+        <p class="mt-3"><i class="far fa-surprise"></i> Aucun résultat ne correspond à votre recherche.<br>Essayez de modifier vos critères.</p>
         <%= render "components/search_form" %>
       <% else %>
-        <p>+ de <%= @bike_ads.count %> à louer sur toute la France</p>
+        <p><%= @bike_ads.size %> annonce<%= 's' if @bike_ads.size > 1 %> de location</p>
       <% end %>
       <%= render 'components/bike_card', locals: { bike_ads: @bike_ads } %>
     </div>
