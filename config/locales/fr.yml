@@ -7,6 +7,16 @@ fr:
         bike_ad_id: "moto"
         user_id: "membre"
         price: "prix"
+      bike_ad:
+        model: "Modèle"
+        brand: "Marque"
+        category: "Catégorie"
+        year: "Année"
+        address: "Adresse"
+        price_per_day: "Prix par jour"
+        available: "Disponible"
+        user_id: "Membre"
+        description: "Description"
       user:
         email: "Email"
         first_name: "Prénom"
@@ -20,3 +30,8 @@ fr:
         sign_up: "S'inscrire"
         sign_in: "Se connecter"
         remember_me: "Se souvenir de moi"
+        current_password: "Mot de passe actuel"
+    errors:
+      messages:
+        blank: "ne doit pas être vide"
+        inclusion: "%{value} n'est pas valide"

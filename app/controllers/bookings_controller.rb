@@ -4,6 +4,7 @@ class BookingsController < ApplicationController
   before_action :check_bike_available, only: [:new, :create]
 
   def new
+    @title_seo = "Réservez cette moto"
     @booking = Booking.new
     @booking.bike_ad = @bike_ad
     authorize @booking

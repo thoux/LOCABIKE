@@ -10,6 +10,7 @@ class BikeAd < ApplicationRecord
   CATEGORIES = ['Cross', 'Enduro', 'Sportive', 'Roadster']
 
   validates :model, :brand, :category, :year, :address, :price_per_day, :description, presence: true
+
   validates :brand, inclusion: { in: BRANDS }
   validates :category, inclusion: { in: CATEGORIES }
 
