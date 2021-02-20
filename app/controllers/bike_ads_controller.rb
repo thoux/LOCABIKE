@@ -21,7 +21,7 @@ class BikeAdsController < ApplicationController
     end
     if @bike_ads.empty?
       @title_seo = "Aucune moto disponible à la location"
-    elsif @bike_ads.count == 1
+    elsif @bike_ads.size == 1
       @title_seo = "Une moto disponible à la location"
     else
       @title_seo = "#{@bike_ads.count} motos disponibles à la location"
